@@ -25,13 +25,28 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun retiroSaldo() {
-        saldo -= binding.editMonto.text.toString().toInt()
-        Toast.makeText(this, "Su retiro se ha concretado correctamente", Toast.LENGTH_SHORT).show()
-    }
-
     private fun ingresoSaldo() {
         saldo += binding.editMonto.text.toString().toInt()
-        Toast.makeText(this, "Su saldo se ha actualizado correctamente", Toast.LENGTH_SHORT).show()
+        limpiar()
+        Toast.makeText(applicationContext, "Su saldo se ha actualizado correctamente", Toast.LENGTH_SHORT).show()
     }
+
+    private fun retiroSaldo() {
+        val monto =  binding.editMonto.text.toString().toInt()
+
+        if (monto <= saldo ){
+            saldo -= monto
+            limpiar()
+            Toast.makeText(applicationContext, "saldo insuficiente", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(applicationContext, "Su retiro se ha concretado correctamente", Toast.LENGTH_SHORT).show()
+        }
+
+    }
+
+    private fun limpiar() {
+        binding.editMonto.text.clear()
+    }
+
+
 }
