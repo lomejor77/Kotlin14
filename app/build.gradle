@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace 'cl.awakelabs.kotlin14'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "cl.awakelabs.kotlin14"
